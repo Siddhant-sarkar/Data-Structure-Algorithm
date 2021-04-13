@@ -45,13 +45,23 @@ void print( node* head){
   node* temp = head;
     while(temp!=NULL){
       if(temp->next == NULL){
-          cout<<temp->data<<endl;
+          cout<<temp->data<<"==> NULL"<<endl;
       }else{    
           cout<<temp->data<<"==>";
       }
         temp=temp->next;
     }
 
+}
+void printRecu(node* head){
+    if(head==NULL) return;
+    cout<<head->data<<endl;
+    printRecu(head->next);
+}
+void printRev(node* head){
+    if(head==NULL) return;
+    printRev(head->next);
+    cout<<head->data<<endl;
 }
 /********************************
  * this is the function to insert the node at the
@@ -61,7 +71,6 @@ void insertAtTail(node* &head,int data){
   node* temp= new node(data);
   node* temp2= head;
   if(head==NULL){
-     cout<<"the linked list is "<<endl;
      head=temp;
      return;
   }
@@ -69,17 +78,40 @@ void insertAtTail(node* &head,int data){
         temp2=temp2->next;
     }
     temp2->next=temp;
-
 }
+/********************************
+ * This is the function to reverse a linked list
+ * basic 3 pointer algorithm
+ * curr=head
+ * prev,next =NILL
+ ********************************/
+node* reverseList(node* &head){
+  node* prev=NULL;
+  node* cur=head;
+  node* next=NULL;
+  while(cur!=NULL){
+  next=cur->next;
+  cur->next=prev;
+  prev=cur;
+  cur=next;
+  }
+  return prev;
+}
+node* reverseRec(node* &head){
+    if(head->next== NULL){
+       return head; 
+    }
+    node* a=reverseRec(head->next);
+    head->next->next=head;
+    head->next=NULL;
+    return a;
+   }
 int main(){
-  node* head;
-    head=NULL;
-   // insert(head,1,1);
+  node* head=NULL;
     insertAtTail(head,2);
-    insertAtTail(head,2);
-    insertAtTail(head,2);
-    insertAtTail(head,2);
-    insertAtTail(head,2);
-    print(head);
-
+    insertAtTail(head,3);
+    insertAtTail(head,4);
+    insertAtTail(head,5);
+    insertAtTail(head,6);
+    print(reverseRec(head));
 }
