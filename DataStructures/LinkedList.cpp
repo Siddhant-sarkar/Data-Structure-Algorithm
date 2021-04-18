@@ -95,7 +95,8 @@ node* reverseList(node* &head){
   prev=cur;
   cur=next;
   }
-  return prev;
+  head=prev;
+  return head;
 }
 node* reverseRec(node* &head){
     if(head->next== NULL){
