@@ -5,9 +5,12 @@ void print(list<int>l){
 	cout<<endl;
 }
 
+
 int main(){
-	list<int> l={1,2,3,4,5};
-	list<int> ll=l;
-	l.merge(ll);
-	print(l);
+	list<int> v={1,2,3,4,5,6,7,8};
+	list<int> vv={1,2,3,4,5,6,7,8};
+	auto it =vv.insert(vv.begin(),999);
+	cout<<*it<<endl;
+	print(vv);
+
 }
