@@ -1,4 +1,4 @@
-#include"bits/stdc++.h"
+#include<bits/stdc++.h>
 
 using namespace std;
 #define fo(i, n) for (i = 0; i < n; i++)
@@ -6,11 +6,13 @@ using namespace std;
 #define ll long long
 
 #define si(x) scanf("%d", & x)
+#define ci(x) cin>>x
 #define sl(x) scanf("%lld", & x)
 #define ss(s) scanf("%s", s)
 #define pi(x) printf("%d\n", x)
 #define pl(x) printf("%lld\n", x)
 #define ps(s) printf("%s\n", s)
+
 
 #define deb(x) cout << #x << "=" << x << endl
 #define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
@@ -25,21 +27,23 @@ typedef vector <string> vs;
 
 const int mod = 1'000'000'007;
 
-int countSetBits(int i){
-	int a=0;
-	while(i>0){
-		i&=(i-1);
-		a++;
-	}
-	return a;
+int copyInRange(int i,int j ,int m,int n){
+	int a=m-n+1;
+	int b=(1<<a)-1;
+	b=b<<n-1;
+	// deb(b);
+	return i|b;
 }
+
 void solve() {
   int i, j, n, m;
-  si(i);
-  si(j);
-  n=i^j;
-  // deb(n);
-  pi(countSetBits(n));
+  ci(i);
+  ci(j);
+  ci(m);
+  ci(n);
+  pi(copyInRange(i,j,m,n));
+
+
 }
 
 int main() {

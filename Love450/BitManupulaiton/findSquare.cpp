@@ -24,29 +24,30 @@ typedef vector < int > vi;
 typedef vector <string> vs;
 
 const int mod = 1'000'000'007;
-
-int countSetBits(int i){
-	int a=0;
-	while(i>0){
-		i&=(i-1);
-		a++;
+int findSquare(int i){
+	int a=0,b=i>>1;
+	if(!i) return i;
+	if(i&1){
+		return ((findSquare(b)<<2)+(b<<2)+1);
+	}else{
+		return (findSquare(b)<<2);
 	}
-	return a;
+
+
+
 }
 void solve() {
   int i, j, n, m;
-  si(i);
-  si(j);
-  n=i^j;
-  // deb(n);
-  pi(countSetBits(n));
+  cin>>i;
+  pi((0<<2)<<2);
+  // pi(findSquare(i));
 }
 
 int main() {
-  #ifndef ONLINE_JUDGE
-    freopen("inp.txt","r",stdin);
-    freopen("out.txt","w",stdout);
-  #endif
+  // #ifndef ONLINE_JUDGE
+  //   freopen("inp.txt","r",stdin);
+  //   freopen("out.txt","w",stdout);
+  // #endif
     
   ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
   int t = 1;

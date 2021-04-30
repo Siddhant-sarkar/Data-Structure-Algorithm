@@ -13,7 +13,7 @@ using namespace std;
 #define ps(s) printf("%s\n", s)
 
 #define deb(x) cout << #x << "=" << x << endl
-#define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define deb2(x, y) cout << #x << "=" k<< x << "," << #y << "=" << y << endl
 
 #define all(x) x.begin(), x.end()
 #define sortall(x) sort(all(x))
@@ -25,21 +25,36 @@ typedef vector <string> vs;
 
 const int mod = 1'000'000'007;
 
-int countSetBits(int i){
-	int a=0;
-	while(i>0){
-		i&=(i-1);
-		a++;
+int convertBinary(int n){
+	int a=1,b=0;
+	if(n==1) return 1;
+	if(n==2) return 10;
+	while(a<n) a*=2;
+	a/=2;
+	while(a){
+		int c=n/a;
+		b+=c;
+		b*=10;
+		n-=c*a;
+		a/=2;
 	}
-	return a;
+	return b/10;
+}
+ll divide(ll m,ll n){
+	ll i,q=0,t=0;
+	Fo(i,31,-1){
+		if((t+(n<<i))<m){
+			t+=n<<i;
+			q|=1<<i;
+		}
+	}
+	return q;
 }
 void solve() {
-  int i, j, n, m;
-  si(i);
-  si(j);
-  n=i^j;
-  // deb(n);
-  pi(countSetBits(n));
+  ll i, j, n, m;
+  pl(divide(10LL,3LL));
+  
+
 }
 
 int main() {

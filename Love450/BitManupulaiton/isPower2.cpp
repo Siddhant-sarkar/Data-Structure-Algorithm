@@ -25,21 +25,24 @@ typedef vector <string> vs;
 
 const int mod = 1'000'000'007;
 
-int countSetBits(int i){
+bool istwo(int i){
 	int a=0;
-	while(i>0){
+	while(i){
 		i&=(i-1);
 		a++;
 	}
-	return a;
+	if(a==1){
+		return true;
+	}
+	return false;
 }
+
 void solve() {
   int i, j, n, m;
   si(i);
-  si(j);
-  n=i^j;
-  // deb(n);
-  pi(countSetBits(n));
+  // deb(i);
+  pi(istwo(i));
+
 }
 
 int main() {

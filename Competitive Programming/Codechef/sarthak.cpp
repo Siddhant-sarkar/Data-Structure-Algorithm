@@ -25,21 +25,23 @@ typedef vector <string> vs;
 
 const int mod = 1'000'000'007;
 
-int countSetBits(int i){
-	int a=0;
-	while(i>0){
-		i&=(i-1);
-		a++;
-	}
-	return a;
-}
 void solve() {
-  int i, j, n, m;
-  si(i);
-  si(j);
-  n=i^j;
-  // deb(n);
-  pi(countSetBits(n));
+  ll i, j,k,l ,n=0, m=0;
+  cin>>i>>j>>k;
+  string s;
+  while(i--){
+  	cin>>s;
+  	if(s[0]=='E'||s[0]=='Q'||s[0]=='U'||s[0]=='I'||s[0]=='N'||s[0]=='O'||s[0]=='X'){
+  		m+=j;
+  	}else n+=k;
+  }
+  	// deb2(m,n);
+
+  	if(m>n) ps("SARTHAK");
+  	else if(n>m) ps("ANURADHA");
+  	else ps("DRAW");
+
+
 }
 
 int main() {

@@ -1,4 +1,4 @@
-#include"bits/stdc++.h"
+#include<bits/stdc++.h>
 
 using namespace std;
 #define fo(i, n) for (i = 0; i < n; i++)
@@ -25,21 +25,33 @@ typedef vector <string> vs;
 
 const int mod = 1'000'000'007;
 
-int countSetBits(int i){
+int setBits(int i){
 	int a=0;
-	while(i>0){
-		i&=(i-1);
+	while(i){
+		i&=i-1;
 		a++;
 	}
 	return a;
 }
+
+int findPos(int i){
+	int a=0;
+	if(i==1) return -1;
+	if(setBits(i)!=1){
+		return -1;
+	}
+	while(i){
+		i/=2;
+		a++;
+	}
+	return a;
+}
+
 void solve() {
   int i, j, n, m;
   si(i);
-  si(j);
-  n=i^j;
-  // deb(n);
-  pi(countSetBits(n));
+  pi(findPos(i));
+
 }
 
 int main() {
