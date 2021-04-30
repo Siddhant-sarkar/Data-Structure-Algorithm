@@ -36,4 +36,5 @@
 
 # Unignore all dirs
 !*/
-
+inp.txt
+out.txt
