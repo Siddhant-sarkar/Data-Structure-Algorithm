@@ -41,56 +41,40 @@ const int N = 3e5, M = N;
 
 vi g[N];
 int a[N];
-vector<string> printSubsets(vector<char> ch){
-  int i,j;
-  int a= 1<<ch.size();
-  int b=ch.size();
-  deb2(a,b);
-  vector<string> s;
-  Fo(i,0,a){
-    string ss="";
-    Fo(j,0,b){
-      if((i&1<<j)) {
-        char r=ch[j];
-        ss.pb(r);
-      }
-    }
-    s.pb(ss);
-  }
-  s.erase(s.begin());
-  sortall(s);
-  return s;
-} 
+
 void solve() {
   int i, j, k;
-  int a ,b ,d ,m ,n;
-  ci(i);
-  char c;
-  vector<char> ch;
-  while(i--) {
-    cin>>c;
-    ch.pb(c);
+  ll a ,b ,c ,d ,m ,n;
+  ci3(a,b,c);
+  map<ll,ll> rec;
+  while(a--){
+    ci(d);
+    if(rec.find(d)!=rec.end()) ((rec.find(d))->S)++;
+    else rec.insert(mp(d,1));
   }
-  vector<string> s=printSubsets(ch);
-  tr(it,s) cout<<*it<<endl;
-  
+  if(b<c){
+    ps("YES");
+    return;
+}
+  else{
+    tr(it,rec) if((it->S)%2) (it->S)--;
+    d=0;
+    tr(it,rec) d+=(it->F)*(it->S);
+    // deb(d);
+    if(d>=b-c) ps("YES");
+    else ps("NO");
 
+  }
+  // tr(it,rec) deb2(it->F,it->S);
 }
 
 int main() {
-
- #ifndef ONLINE_JUDGE
-    freopen("inp.txt","r",stdin);
-    freopen("out.txt","w",stdout);
-    freopen("err.txt","w",stderr);
-  #endif
-
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--) {
       solve();
     }
-    cerr<<"time taken : "<<((float)clock()/CLOCKS_PER_SEC)*1000<<" msecs"<<endl;
+
     return 0;
 }
