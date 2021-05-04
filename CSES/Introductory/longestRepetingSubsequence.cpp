@@ -43,16 +43,17 @@ vi g[N];
 int a[N];
 
 void solve() {
-  ll i, j, k;
-  int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  int i=0, j=INT_MIN, k;
+  string s;
+  ci(s);
+  fo(k,(int)s.length()){
+  	if(s[k]==s[k+1]) i++;
+  	else{
+  		j=max(i,j);
+  		i=0;
+  	}
+  }
+  pi(j+1);
 }
 
 int main() {

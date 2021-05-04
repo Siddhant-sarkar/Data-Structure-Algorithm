@@ -42,17 +42,32 @@ const int N = 3e5, M = N;
 vi g[N];
 int a[N];
 
+pii minMax(vi b){
+	int m=((b.size()))/2;
+	pii c;
+	if(b.size()==1){
+		return mp(b.front(),b.front());
+	}else if(b.size()==2){
+		return mp(min(b.front(),b.back()),max(b.front(),b.back()));
+	}else{
+		vi fh (b.begin(),b.begin()+m);
+		vi sh (b.begin()+m+1,b.end());
+		pii a=minMax(fh);
+		pii b=minMax(sh);
+		c=mp(min(a.F,b.F),max(a.S,b.S));
+	}
+	return c;
+}
 void solve() {
-  ll i, j, k;
-  int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  int i, j, k;
+  int a  ,c ,d ,m ,n;
+  vi b;
+  while(cin>>a) b.pb(a);
+  // tr(it,b) cout<<*it<<"  ";
+  cout<<"min "<<minMax(b).F<<" max "<<minMax(b).S<<endl;
+  // cout<<*min_element(all(b))<<endl;
+  // cout<<*max_element(all(b))<<endl;
+
 }
 
 int main() {

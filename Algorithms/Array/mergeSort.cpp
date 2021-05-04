@@ -41,18 +41,55 @@ const int N = 3e5, M = N;
 
 vi g[N];
 int a[N];
+void merge(int ar[],int l,int m,int r){
+	int n1=m-l+1,n2=r-m;
 
+	int a[n1],b[n2];
+	for(int i=0;i<n1;i++){
+		a[i]=ar[i+l];
+	}
+	for(int j=0;j<n2;j++){
+		b[j]=ar[j+1+m];
+	}
+	int i=0,j=0,k=l;
+
+	while(i<n1&&j<n2){
+		if(a[i]<=b[j]){
+			ar[k]==a[i];
+			i++;
+		}else{
+			ar[k]=b[j];
+			j++;
+		}
+		k++;
+	}
+
+	while(i<n1){
+		ar[k]=a[i];
+		i++;
+		k++;
+	}
+	while(j<n2){
+		ar[k]=b[j];
+		j++;
+		k++;
+	}
+}
+void mergeSort(int ar[],int l,int r){
+	if(l<r){
+	int m=(l+r)/2;
+	mergeSort(ar,l,m);
+	mergeSort(ar,m+1,r);
+	merge(ar,l,m,r);
+}
+}
 void solve() {
-  ll i, j, k;
+  int i, j, k;
   int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  int ar[5]={5,4,3,2,1};
+
+  mergeSort(ar,0,4);
+  fo(i,5) cout<<ar[i]<<"   ";
 }
 
 int main() {

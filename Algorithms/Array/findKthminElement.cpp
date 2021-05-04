@@ -42,17 +42,19 @@ const int N = 3e5, M = N;
 vi g[N];
 int a[N];
 
+
+int findNthMin(int ar[],int l,int r,int k){
+	if(l=r) return ar[l];
+	int p=rand()%(r+1);
+	if (k==p) return ar[k];
+	else if(k<p) partition()
+
+}
 void solve() {
-  ll i, j, k;
+  int i, j, k;
   int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  int ar[5]={5,6,2,3,4};
+  findNthMin(ar,l,r);
 }
 
 int main() {
@@ -65,7 +67,7 @@ int main() {
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--) {
       solve();
     }

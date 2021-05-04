@@ -42,17 +42,25 @@ const int N = 3e5, M = N;
 vi g[N];
 int a[N];
 
+vi reverse(vi ar,int n){
+	int i=0,j=n-1;
+	while(i<j){
+		swap(ar[i],ar[j]);
+		i++;
+		j--;
+	}
+	return ar;
+	
+}
 void solve() {
-  ll i, j, k;
-  int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  int i, j, k;
+  int a  ,c ,d ,m ,n;
+  cin>>a;
+  vi ar;
+  // fo(i,a) cin>>b[i];
+  while(cin>>j) ar.pb(j);
+  tr(it,reverse(ar,a)) cout<<*it<<"    ";
+  
 }
 
 int main() {

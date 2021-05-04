@@ -43,16 +43,22 @@ vi g[N];
 int a[N];
 
 void solve() {
-  ll i, j, k;
+  int i, j, k;
   int a ,b ,c ,d ,m ,n;
   ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  set<int> s;
+  while(cin>>i) s.insert(i);
+  if(i==2) i==1?cout<<2:cout<<1;
+  else{
+  	tr(it,s){
+  	// cout<<*it<<endkl
+  	if(*(next(it,1))-(*it)!=1){
+  		cout<<(*it+1)<<endl;
+  		return;
+  	}
+  }
+  }
+
 }
 
 int main() {

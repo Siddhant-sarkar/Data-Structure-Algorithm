@@ -43,16 +43,19 @@ vi g[N];
 int a[N];
 
 void solve() {
-  ll i, j, k;
-  int a ,b ,c ,d ,m ,n;
+  ll int  i=0, j=0, k=0;
+  ll int  a ,b ,c ,d ,m ,n;
   ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  vl ar;                      // 3  5 1 7
+  while(cin>>a) ar.pb(a);
+  fo(j,i){
+  	if(ar[j]>ar[j+1] ){
+  		// deb(k);
+  		k+=ar[j]-ar[j+1];
+  		ar[j+1]+=(ar[j]-ar[j+1]);
+  	}
+  }
+  cout<<k;
 }
 
 int main() {

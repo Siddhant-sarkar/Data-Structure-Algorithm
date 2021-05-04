@@ -43,16 +43,29 @@ vi g[N];
 int a[N];
 
 void solve() {
-  ll i, j, k;
+  int i, j, k;
   int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
+  set<int> wt;
+  ci2(a,b);
+  while(a--){
+  	ci(c);
+  	wt.insert(c);
+  }
+  // tr(it,wt) cout<<*it<<"   ";
+  // cout<<"\n";
+  if(b>=*wt.rbegin()){
+  	cout<<"NO\n";
+  	return;
+  }else{
+  	cout<<"YES\n";
+  	cout<<*wt.rbegin()<<" ";
+  	wt.erase(*wt.rbegin());
+  	tr(it,wt) cout<<*it<<"  ";
+  	
+
+  }
   cout<<"\n";
+  
 }
 
 int main() {
@@ -65,7 +78,7 @@ int main() {
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--) {
       solve();
     }

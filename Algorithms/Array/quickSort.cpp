@@ -1,4 +1,5 @@
 #include"bits/stdc++.h"
+#include <cstdlib>
 using namespace std;
 #define gc getchar_unlocked
 #define fo(i,n) for(i=0;i<n;i++)
@@ -41,18 +42,52 @@ const int N = 3e5, M = N;
 
 vi g[N];
 int a[N];
+///=======================///
+int partitionRandom(int ar[],int l,int r);
+int partition(int ar[],int l,int r);
+void quicksort(int ar[],int l,int r);
+int partitionGreator(int ar[],int l,int r);
+///=======================///
 
+
+
+
+int partitionRandom(int ar[],int l,int r){
+	srand(time(NULL));
+    int ra=l+rand() % (r-l);
+	swap(ar[ra],ar[r]);
+	return partitionGreator(ar,l,r);
+}
+
+int partitionGreator(int ar[],int l,int r){
+	int p=ar[r],a ,i=l;
+	Fo(a,l,r){
+		if(ar[a]<=p){
+			swap(ar[a],ar[i]);
+			i++;
+		}
+	}
+	swap(ar[i],ar[r]);
+	return i;
+
+
+}
+void quicksort(int ar[],int l,int r){
+	if(l<r){
+		int p=partitionRandom(ar,l,r);
+		quicksort(ar,l,p-1);
+		quicksort(ar,p+1,r);
+	}
+}
 void solve() {
-  ll i, j, k;
+  int i, j, k;
   int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  int ar[5]={2,3,4,1,5};
+  quicksort(ar,0,4);
+  fo(i,5) pi(ar[i]);
+  // fo(i,100) cout<<rand()%10<<endl;
+
+
 }
 
 int main() {
@@ -65,7 +100,7 @@ int main() {
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--) {
       solve();
     }

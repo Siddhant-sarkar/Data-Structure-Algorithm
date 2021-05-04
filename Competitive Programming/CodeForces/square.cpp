@@ -41,18 +41,24 @@ const int N = 3e5, M = N;
 
 vi g[N];
 int a[N];
+bool recprev(float a){
+	if(a==2) return 1;
+	else if(a-(int)a>1e-9) return false;
+	return recprev(sqrt(a));
 
+}
 void solve() {
   ll i, j, k;
   int a ,b ,c ,d ,m ,n;
-  ci(i);
-  while(true){
-    cout<<i<<" ";
-    if(i==1) break;
-    else if(i%2==0) i/=2;
-    else i=i*3+1;
-  }  
-  cout<<"\n";
+  cin>>i;
+  // deb(i);
+
+  if((i&(i-1))==0){
+  	if(recprev(i)) ps("YES");
+  	else ps("NO");
+  }
+  else ps("NO");
+  
 }
 
 int main() {
@@ -65,7 +71,7 @@ int main() {
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--) {
       solve();
     }
