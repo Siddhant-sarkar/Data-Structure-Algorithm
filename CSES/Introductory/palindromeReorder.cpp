@@ -42,19 +42,13 @@ const int N = 3e5, M = N;
 vi g[N];
 int a[N];
 
-ll solve() {
+void solve() {
+	map<char,int>mp;
   int i, j, k;
-  ll a ,b=5 ,c=1 ,d=0 ,m ,n;
-  cin>>a;
-  for(i=5;i<=a;i*=5){
-  	j=a/i;
-  	d+=(j);
-  	c++;
-  }
-  return d;
-
+  int b=0 ,c ,d ,m ,n;
+  sring s;
+  cin>>s;
 }
-
 
 int main() {
 
@@ -68,7 +62,7 @@ int main() {
     int t = 1;
     // cin >> t;
     while(t--) {
-      cout<<solve()<<"\n";
+      solve();
     }
     cerr<<"time taken : "<<((float)clock()/CLOCKS_PER_SEC)*1000<<" msecs"<<endl;
     return 0;
