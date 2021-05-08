@@ -43,20 +43,15 @@ vi g[N];
 int a[N];
 
 
-int solve() {
+ll solve() {
   ll i, j, k;
   ll a ,b=1 ,c ,d=0 ,m ,n;
   	cin>>a;
-  	if(a==1)
-  		return 1;
-  	while(b<a){
-  		c=a/b;
-  		if(c>9){
-  			d+=9;
-  		}else
-  			d+=c;
-  		b*=10;
-  		b++;
+  	while(a>0){
+  		if(a/10==0)
+  			d+=a%10;
+  		a/=10;
+  		d+=9;
   	}
   	return d;
 }
