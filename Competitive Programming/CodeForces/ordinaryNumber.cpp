@@ -43,32 +43,26 @@ vi g[N];
 int a[N];
 
 
-ll solve() {
-  ll i, j, k;
-  ll a ,b=1 ,c ,d=0 ,m ,n;
-  	cin>>a;
-  	while(a>0){
-  		if(a/10==0)
-  			d+=a%10;
-  		a/=10;
-  		d+=9;
-  	}
-  	return d;
+void solve() {
+  ll a,i, j, k=0,t=0;
+  cin>>a;
+  Fo(i,1,10){
+    ll sum=0;
+    fo(j,9){
+      sum+=pow(10,j);
+      // deb(sum);
+      if(i*sum<=a) k++;
+    }
+  }
+  cout<<k<<"\n";
 }
 
 int main() {
-
- #ifndef ONLINE_JUDGE
-    freopen("inp.txt","r",stdin);
-    freopen("out.txt","w",stdout);
-    freopen("err.txt","w",stderr);
-  #endif
-
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;
     cin >> t;
     while(t--) {
-      cout<<solve()<<"\n";
+      solve();
     }
     return 0;
 }
