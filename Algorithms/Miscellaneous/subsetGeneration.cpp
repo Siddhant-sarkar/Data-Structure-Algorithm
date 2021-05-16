@@ -26,6 +26,23 @@ void generateSubset(int k,int n){
 	s.pop_back();
 	generateSubset(k+1,n);
 }
+/**
+ * This is the iterative method for the subset generation 
+ * it uses the bitmasked loop
+ * to generate the number is the combination
+ * ***/
+
+void generateSubset(int n){
+	for(int i=0;i<1<<n;i++){
+		vector<int>a;
+		for(int j=0;j<n;j++){
+			if(i&1<<j)
+				a.push_back(j);
+		}
+		for(auto it : a)
+			cout<<it<<"  ";
+	}
+}
 
 
 /**

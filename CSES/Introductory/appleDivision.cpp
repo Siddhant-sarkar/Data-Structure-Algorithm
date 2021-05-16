@@ -41,45 +41,46 @@ const int N = 3e5, M = N;
 
 vi g[N];
 int a[N];
-vl ar;
-vl arr;
-ll mi=INT_MAX;
-ll total,half;
-void takeinput(vl &ar){
-  int i;
-  ll a;
-  cin>>i;
-  while(cin>>a)
-   ar.pb(a);
-  total=accumulate(all(ar),0);
+ll findMin(ll t,int n,vector<ll> ar){
+  ll ans=INT_MAX;
+  for(ll i=0;i<1<<n;i++){
+    ll sum=0;
+    for(ll j=0;j<n;j++){
+      if(i&1<<j)
+        sum+=ar[j];
+    }
+    ll an=abs((t-sum)-sum);
+    ans=min(ans,an);
+  }
+  return ans;
 }
-
-ll findMinAns(vl ar,ll t,ll c,ll n){
-  if(n==0)
-    return abs((t-c)-c);
-  return min(findMinAns(ar,t,c+ar[n],n-1),findMinAns(ar,t,c,n-1));
+ll findMin(vl ar,ll t,ll c,int n,int l){
+  if(l==n)
+    return abs(t-2*c);
+  return min(findMin(ar,t,c+ar[n],n+1,l),findMin(ar,t,c,n+1,l));
 }
 void solve() {
-  int i, j=0, k=0;
-  cin>>i;
-  fo(j,i){
+  ll i, j, k,a;
+  ll total=0;
+  cin>>a;
+  vl ar(a);
+  fo(j,a){
     cin>>k;
-    ar[j];
+    total+=k;
+    ar[j]=k;
   }
-  deb(i);
-  total=accumulate(all(ar),0);
-  cout<<findMinAns(ar,total,0,i-1);
-
-
+  deb(total);
+  // cout<<findMin(total,a,ar);
+  cout<<findMin(ar,total,0,0,a);
 }
 
 int main() {
 
- #ifndef ONLINE_JUDGE
-    freopen("inputf.in","r",stdin);
-    freopen("outputf.in","w",stdout);
-    freopen("errorf.in","w",stderr);
-  #endif
+//  #ifndef ONLINE_JUDGE
+    // freopen("inputf.in","r",stdin);
+    // freopen("outputf.in","w",stdout);
+    // freopen("errorf.in","w",stderr);
+  // #endif
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;

@@ -36,3 +36,5 @@ err.txt
 *.exe
 *.out
 *.app
+
+.cph
