@@ -13,8 +13,8 @@ using namespace std;
 #define ci(x) cin>>x
 #define ci2(x,y) cin>>x>>y
 #define ci3(x,y,z) cin>>x>>y>>z
-#define deb(x) cout << #x << "=" << x << endl
-#define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define deb(x) cerr << #x << "=" << x << endl
+#define deb2(x, y) cerr << #x << "=" << x << "," << #y << "=" << y << endl
 #define pb push_back
 #define mp make_pair
 #define F first
@@ -43,30 +43,36 @@ vi g[N];
 int a[N];
 
 void solve() {
-  int i, j, k,ans=0;
+  int a, b, k,ans=0;
   int n,m;
   cin>>n>>m;
-  Fo(i,2,n+1){
-  	Fo(j,2,n+1){
-  		if(((m%i)%j)==((m%j)%i)) ans++;
-  	}
+  // deb2(n,m);
+  Fo(b,1,n+1){
+    Fo(a,1,b){
+      if(((m%a)%b)==((m%b)%a)){
+        deb2(a,b);
+        ans++;
+      }
+    }
   }
-  cout<<ans<<"\n";
+  cout<<ans<<endl;
 }
 
 int main() {
 
  #ifndef ONLINE_JUDGE
-    freopen("inp.txt","r",stdin);
-    freopen("out.txt","w",stdout);
-    freopen("err.txt","w",stderr);
+    freopen("inputf.in","r",stdin);
+    freopen("outputf.in","w",stdout);
+    freopen("errorf.in","w",stderr);
   #endif
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;
     cin >> t;
     while(t--) {
+    cerr<<"******************\n";
       solve();
+    cerr<<"*******************\n";
     }
     cerr<<"time taken : "<<((float)clock()/CLOCKS_PER_SEC)*1000<<" msecs"<<endl;
     return 0;

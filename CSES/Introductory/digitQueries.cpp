@@ -1,3 +1,4 @@
+
 #include"bits/stdc++.h"
 using namespace std;
 #define gc getchar_unlocked
@@ -44,7 +45,7 @@ int a[N];
 
 void solve() {
   int i, j, k;
-  
+  cout<<"Hello World\n";
 }
 
 int main() {

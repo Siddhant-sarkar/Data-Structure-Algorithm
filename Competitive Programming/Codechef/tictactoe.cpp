@@ -99,22 +99,30 @@ void solve() {
   		j++;
   	ch.pb(t);
   }
-  // deb(j);
   pii a=checker(ch);
+  deb(j);
   deb2(a.F,a.S);
-
-  if(a.F>0 && a.S>0)
-  	reach=false;
-  // deb(reach);
-  if(reach){
-  	if(a.F>0 || a.S>0)	{
-  		cout<<"1\n";
+  //if score is 0-0 then 
+  if(a.F==1 || a.S==1){
+  	if(a.F==a.S){
+  		cout<<3<<"\n";
+  		return;
+  	}
+  	cout<<1<<"\n";
+  	return;
+  }else if(a.F==0 && a.S==0){
+  	if(j==0){
+  		cout<<1<<"\n";
+  		return;
   	}else{
-  		cout<<"2\n";
+  		cout<<2<<"\n";
+  		return;
   	}
   }else{
-  	cout<<"3\n";
+  	cout<<3<<"\n";
+  	return ;
   }
+
 
 }
 
