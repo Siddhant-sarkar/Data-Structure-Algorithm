@@ -36,24 +36,31 @@ typedef vector<vl>    vvl;
 
 
 const int mod = 1'000'000'007;
-const int N = 3e5, M = N;
+const int N = 3e5;
 //=======================
 
 vi g[N];
 int a[N];
 
+int M=5e5+5;
+vvi divs(M);
+void compute(){
+  for(int i=1;i<=M;i++){
+    for(int j=i;j<=M;j+=i)
+      divs[j].pb(i);
+  }
+}
 void solve() {
-  int a, b, k,ans=0;
+  int b, j, k;
+  ll ans=0;
   int n,m;
   cin>>n>>m;
-  // deb2(n,m);
-  Fo(b,1,n+1){
-    Fo(a,1,b){
-      if(((m%a)%b)==((m%b)%a)){
-        deb2(a,b);
-        ans++;
-      }
-    }
+  for(int b=2;b<=n;b++){
+    int x=m-(m%b);
+    if(x>0) 
+      ans+=lower_bound(all(divs[x]),b)-divs[x].begin();
+    else
+      ans+=b-1;
   }
   cout<<ans<<endl;
 }
@@ -67,12 +74,11 @@ int main() {
   #endif
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    compute();
     int t = 1;
     cin >> t;
     while(t--) {
-    cerr<<"******************\n";
       solve();
-    cerr<<"*******************\n";
     }
     cerr<<"time taken : "<<((float)clock()/CLOCKS_PER_SEC)*1000<<" msecs"<<endl;
     return 0;

@@ -76,11 +76,11 @@ void solve() {
 
 int main() {
 
-//  #ifndef ONLINE_JUDGE
-    // freopen("inputf.in","r",stdin);
-    // freopen("outputf.in","w",stdout);
-    // freopen("errorf.in","w",stderr);
-  // #endif
+ // #ifndef ONLINE_JUDGE
+ //    freopen("inputf.in","r",stdin);
+ //    freopen("outputf.in","w",stdout);
+ //    freopen("errorf.in","w",stderr);
+ //  #endif
 
     ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int t = 1;

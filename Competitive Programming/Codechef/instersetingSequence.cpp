@@ -41,74 +41,18 @@ const int N = 3e5, M = N;
 
 vi g[N];
 int a[N];
-pair<bool,bool> checker(vector<char> ch){
-	pii a;
-	a.F=0;
-	a.S=0;
-	if(ch[0]==ch[1]&&ch[1]==ch[2]){
-		ch[0]=='X'?(a.F)++:(a.S)++;
-		if(ch[1]=='_')
-			a.S--;
-	}
-	if(ch[0]==ch[3]&& ch[3]==ch[6]){
-		ch[0]=='X'?a.F++:a.S++;
-		if(ch[0]=='_')
-			a.S--;
-	}
-	if(ch[2]==ch[5]&& ch[5]==ch[8]){
-		ch[8]=='X'?a.F++:a.S++;
-		if(ch[8]=='_')
-			a.S--;
-	}
-	if(ch[6]==ch[7]&& ch[7]==ch[8]){
-		ch[8]=='X'?a.F++:a.S++;
-		if(ch[8]=='_')
-			a.S--;
-	}
-	if(ch[1]==ch[4]&& ch[4]==ch[7]){
-		ch[4]=='X'?a.F++:a.S++;
-		if(ch[4]=='_')
-			a.S--;
-	}
-	if(ch[3]==ch[4]&& ch[4]==ch[5]){
-		ch[4]=='X'?a.F++:a.S++;
-		if(ch[4]=='_')
-			a.S--;
-	}
-	if(ch[0]==ch[4]&& ch[4]==ch[8]){
-		ch[0]=='X'?a.F++:a.S++;
-		if(ch[8]=='_')
-			a.S--;
-	}
-	if(ch[2]==ch[4]&& ch[4]==ch[6]){
-		ch[0]=='X'?a.F++:a.S++;
-		if(ch[4]=='_')
-			a.S--;
-	}
-	return a;
+
+ll findGcd(ll a,ll b){
+	return b? findGcd(b,a%b):a;
 }
 void solve() {
-  int i, j=0, k;
-  bool reach=true;
-  pii xo(0,0);
-  vector<char>ch;
-  char t;
-  fo(i,9){
-  	cin>>t;
-  	if(t=='_') j++;
-    if(t=='X') xo.F++;
-    if(t=='O') xo.S++;
-  	ch.pb(t);
+  int i, j, k;
+  ll sum=0;
+  cin>>k;
+  Fo(i,1,2*k+1){
+  	sum+=findGcd(k+(i*i),k+((i+1)*(i+1)));
   }
-  pair<bool,bool> a=checker(ch);
-  int ans;
-  if((a.F&&a.S) or !(xo.F==xo.S or xo.F==xo.S+1) or (a.F && !(xo.F==xo.S+1)) or(a.S && !(xo.F==xo.S))) 
-    ans=3;
-  else if((xo.F==xo.S or xo.F==xo.S+1)&&((a.F+a.S==1) or (xo.F+xo.S==9)))
-    ans=1;
-  else
-    ans=2;
-  cout<<ans<<"\n";
+  cout<<sum<<endl;
 }
 
 int main() {
