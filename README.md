@@ -7,7 +7,7 @@
 # Contents 
 - **Competitive Coding**
   - [Codechef 👨‍🍳](./DataStructures/../Competitive%20Programming/Codechef)
-  - [CodeForces 🔥](../Data-Structure-Algorithm/Competitive%20Programming/CodeForces)
+  - [CodeForces 🔥](./Competitive%20Programming/CodeFores)
   - [Google 🔎](../Data-Structure-Algorithm/Competitive%20Programming/Google)
 - **Data Structures**
   - [Array](../Data-Structure-Algorithm/DataStructures/Array)
