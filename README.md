@@ -6,18 +6,22 @@
 ***
 # Contents 
 - **Competitive Coding**
-  - [Codechef 👨‍🍳](./DataStructures/../Competitive%20Programming/Codechef)
-  - [CodeForces 🔥](./Competitive%20Programming/CodeFores)
-  - [Google 🔎](../Data-Structure-Algorithm/Competitive%20Programming/Google)
+  - [Codechef 👨‍🍳]
+  - [CodeForces 🔥]
+  - [Google 🔎]
 - **Data Structures**
-  - [Array](../Data-Structure-Algorithm/DataStructures/Array)
-  - [LinkedList](../Data-Structure-Algorithm/DataStructures/LinkedList/)
-  - [Stack - Queue](../Data-Structure-Algorithm/DataStructures/Stack-Queue)
-  - [Tree](../Data-Structure-Algorithm/DataStructures/BinaryTree)
+  - [Array]
+  - [LinkedList]
+  - [Stack - Queue]
+  - [Tree]
 - **Algorithms**
-  - [Number Theory](../Data-Structure-Algorithm/Algorithms/NumberTheory/)
-  - [Miscellneous](../Data-Structure-Algorithm/Algorithms/Miscellaneous)
-  - [Bit Manipulation](../Data-Structure-Algorithm/Algorithms/BitManupulaiton/)
+  - [Number Theory]
+  - [Miscellneous]
+  - [Bit Manipulation]
+  - [Sorting-Searching]
+  - [Recursion]
+  - [Hashing]
 - **C.S.E.S** 
-  - [Intro.](../Data-Structure-Algorithm/CSES/Introductory)
-  - [Seraching-N-Sorting](../Data-Structure-Algorithm/Algorithms/Sorting-Searching/)
+  - [Intro.]
+  - [Seraching-N-Sorting]
+  
