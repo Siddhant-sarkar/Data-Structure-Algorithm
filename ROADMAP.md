@@ -1,19 +1,19 @@
 # 🏅🏅🏅Complete Roadmap for competitive coding🏅🏅🏅
 ## 1st set of basic stuffs
-1.  Pattern printing problems
-2. time complexity analysis
-3. linear search and circular array representation
-4. palindrome and other numbers(perfect, Armstrong) for basic number problems
-5. Simple Hashing Problem(frequency counting and stuffs) 
+1.  Pattern printing problems 	✅
+2. time complexity analysis 	✅
+3. linear search and circular array representation	✅
+4. palindrome and other numbers(perfect, Armstrong) for basic number Problems ✅	
+5. Simple Hashing Problem(frequency counting and stuffs)	 
 6. Prefix Sum Problems(1D and 2D) {codeforces } 
 7. Sliding window technique(2 out of 5 contests) 
 -----------------------------------------------------------------------------------------------------------
 
 ## Mathematics and NUmber Theory
 ### Basics of number theory
-1. Binary Search is a must(2/5 contests) 
-2.  GCD of 2 numbers in logarithmic time(Euclidean and Extended Euclidean Algorithm) 
-3. linear Diphantine Equation
+1. Binary Search is a must(2/5 contests)	✅ 
+2.  GCD of 2 numbers in logarithmic time(Euclidean and Extended Euclidean Algorithm)	✅ 
+3. linear Diphantine Equation	✅
 4.  Checking prime in sqrt(n) complexity 
 5. Sieve of Eratosthenes(very imp to perform querry probs on the prime) 
 6. Segmented Sieve
