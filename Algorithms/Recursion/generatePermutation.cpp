@@ -7,13 +7,12 @@ void generatePermutation(string s,string ans){
 		return;
 	}
 	for(int i=0;i<s.length();i++){
-		ans=s[i]+ans;
-		generatePermutation(s.substr(1),ans);
-		ans.pop_back();
+		generatePermutation(s.substr(0,i)+s.substr(i+1),ans+s[i]);
 	}
 }
 int main(){
 	string s;
 	cin>>s;
+	// cout<<s.substr(0,4)+s.substr(5);
 	generatePermutation(s,"");
 }
