@@ -1,6 +1,6 @@
 inputf.in
 outputf.in
-
+.DS_Store
 inp.txt
 .vscode
 out.txt
