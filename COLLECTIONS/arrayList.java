@@ -7,7 +7,7 @@ They are implemented form the list interface
 import java.util.*;
 public class arrayList{
 	public static void main(String[] args) {
-		List<Integer> word = new ArrayList();
+		List<Integer> word = new ArrayList<>();
 /*		size() : returns the number of elements that are presnt in the list
 */		// The add( object o) adds the number adds the number in the arraylist to the end of the list
 		word.add(1);

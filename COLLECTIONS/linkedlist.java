@@ -16,7 +16,7 @@ since its is a linked-list
 import java.util.*;
 public class linkedlist{
 	public static void main(String[] args) {
-		List<Integer> word = new LinkedList();
+		List<Integer> word = new LinkedList<>();
 /*		size() : returns the number of elements that are presnt in the list
 */		// The add( object o) adds the number adds the number in the LinkedList to the end of the list
 		word.add(1);
