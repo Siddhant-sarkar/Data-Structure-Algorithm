@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+
 
 public class inverse{
   public static void display(int[] a){
@@ -11,7 +11,7 @@ public class inverse{
     System.out.println(sb);
   }
 
-  public static int[] inverse(int[] a){
+  public static int[] inverseA(int[] a){
     int [] ans =new int [a.length];
     for(int i=0;i<a.length;i++) ans[a[i]]=i;
     return ans;
@@ -26,7 +26,7 @@ public static void main(String[] args) throws Exception {
        a[i] = Integer.parseInt(br.readLine());
     }
 
-    int[] inv = inverse(a);
+    int[] inv = inverseA(a);
     display(inv);
  }
 

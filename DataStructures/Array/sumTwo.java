@@ -25,6 +25,7 @@ public class sumTwo{
 		}
 		if (c!=0) System.out.print(c);
 		for(int m=0;m<ans.length;m++) System.out.println(ans[m]);
+		sc.close();
 
 	}
 }

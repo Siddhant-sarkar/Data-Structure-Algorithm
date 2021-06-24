@@ -13,5 +13,6 @@ public class subset{
 			}
 			System.out.println();
 		}
+		sc.close();
 	}
 }

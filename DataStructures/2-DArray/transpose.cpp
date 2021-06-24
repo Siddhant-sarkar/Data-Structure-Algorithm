@@ -1,3 +1,5 @@
+// #include<iostream>
+// #include<vector>
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -10,7 +12,7 @@ void print(vector<vector<int>>ar){
 	}
 }
 vector<vector<int>> transpose(vector<vector<int>>&ar){
-	for(int i=0;i<ar.size();i++){
+	for(int i=0;i<(int)ar.size();i++){
 		for(int j=0;j<i+1;j++){
 			swap(ar[i][j],ar[j][i]);
 		}

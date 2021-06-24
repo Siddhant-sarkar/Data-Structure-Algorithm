@@ -1,4 +1,4 @@
-import java.io.*;
+    
 import java.util.*;
 
 public class barChart{
@@ -27,7 +27,7 @@ public static void main(String[] args) throws Exception {
         }
         System.out.println();
     }
-
+    sc.close();
  }
 
 }

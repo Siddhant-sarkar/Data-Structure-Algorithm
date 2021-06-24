@@ -1,7 +1,7 @@
-import java.io.*;
+
 import java.util.*;
 
-public class Main{
+public class spanOfArray{
 
 public static void main(String[] args) throws Exception {
     // write your code here
@@ -15,6 +15,7 @@ public static void main(String[] args) throws Exception {
 			max=Math.max(max,ar[i]);
 		}
 		System.out.println(max-min);
+	sc.close();
  }
 
 }

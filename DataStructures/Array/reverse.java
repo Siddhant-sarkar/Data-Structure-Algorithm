@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+
 
 public class reverse{
   public static void display(int[] a){
@@ -11,7 +11,7 @@ public class reverse{
     System.out.println(sb);
   }
 
-  public static void reverse(int[] a){
+  public static void reverseA(int[] a){
     int s=0;
     int to=(a.length%2==1)?a.length/2:(a.length/2)-1;
     while(s<=to){
@@ -31,7 +31,7 @@ public static void main(String[] args) throws Exception {
        a[i] = Integer.parseInt(br.readLine());
     }
 
-    reverse(a);
+    reverseA(a);
     display(a);
  }
 

@@ -1,4 +1,4 @@
-import java.io.*;
+
 import java.util.*;
 public class difference{
 	public static void main(String[] args) {
@@ -9,6 +9,7 @@ public class difference{
 		int n2=sc.nextInt();
 		int []ar2 = new int [n2];
 		for(int i=0;i<n2;i++) ar2[i]=sc.nextInt();
+		sc.close();
 		int []ans = new int[Math.max(n1,n2)];
 
 		int i=n1-1,j=n2-1,k=Math.max(n1,n2)-1;
@@ -30,5 +31,6 @@ public class difference{
 		}
 		if(ans[0]==0) for(i=1;i<ans.length;i++) System.out.println(ans[i]);
 		else for(i=0;i<ans.length;i++) System.out.println(ans[i]);
+
 	}
 }
