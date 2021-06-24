@@ -9,7 +9,7 @@
 7. Sliding window technique(2 out of 5 contests) 
 -----------------------------------------------------------------------------------------------------------
 
-## Mathematics and NUmber Theory
+## Mathematics and Number Theory
 ### Basics of number theory
 1. Binary Search is a must(2/5 contests)	✅ 
 2.  GCD of 2 numbers in logarithmic time(Euclidean and Extended Euclidean Algorithm)	✅ 
