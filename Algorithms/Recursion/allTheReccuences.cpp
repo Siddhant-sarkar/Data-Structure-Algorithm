@@ -1,13 +1,20 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
 vector<int>vec;
 vector<int> allIndex(vector<int>& arr, int idx, int data, int count)
 {
-  vector<int>
-}
+  if(idx==arr.size()){vector<int> ar(idx); return ar;} 
+  else if(arr[idx]==data) {
+    vector<int>ar=allIndex(arr,++idx,data,++count);
+    ar[count]=idx;
+    return ar;
+  }else{
+    vector<int>ar=allIndex(arr,++idx,data,count);
+    return ar;
+  }
 
+}
 int main() {
   int n ;
   cin >> n;
