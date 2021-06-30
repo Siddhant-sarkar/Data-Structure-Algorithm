@@ -1,4 +1,4 @@
-#include"bits/stdc++.h"
+#include<iostream>
 using namespace std;
 
 void towerOfHanoi(int x,char a,char b,char c){
