@@ -1,10 +1,3 @@
-inputf.in
-outputf.in
-.DS_Store
-inp.txt
-.vscode
-out.txt
-err.txt
 # Prerequisites
 *.d
 
@@ -39,3 +32,12 @@ err.txt
 *.app
 
 .cph
+inputf.in
+outputf.in
+errorf.in
+.DS_Store
+inp.txt
+.vscode
+out.txt
+err.txt
+.dSYM
