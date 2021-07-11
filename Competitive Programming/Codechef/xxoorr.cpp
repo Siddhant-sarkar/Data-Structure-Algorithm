@@ -4,20 +4,17 @@ using namespace std;
 
 void solve(){
 	long long n,k;cin>>n>>k;
-	vector<int>pcount(31,0);
+	vector<int> arr(100,0);
 	while(n--){
-		int m;cin>>m;
-		for(int j=0;j<=30;j++){
-			if(m&1<<j) pcount[j]++;
-
-		}
+		long long nm;cin>>nm;
+		for(int i=0;1<<i<=nm;i++) 
+			if(nm&1<<i) arr[i]++;
 	}
 	long long ans=0;
-	for(auto it:pcount){
-		cout<<it<<"	";
-		ans+=(it/k+it%k);
-	} 
-	cout<<endl;
+	for(auto it:arr){
+		// cout<<it<<endl;
+		ans+=(it/k)+it%k;
+	}
 	cout<<ans<<endl;
 }
 int main(){
