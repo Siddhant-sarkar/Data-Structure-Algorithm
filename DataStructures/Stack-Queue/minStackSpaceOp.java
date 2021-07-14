@@ -12,23 +12,42 @@ public class minStackSpaceOp {
     }
 
     int size() {
-      // write your code here
+      return data.size();
     }
 
     void push(int val) {
-      // write your code here
+      if(data.size()==0){
+        data.push(val);
+        min=val;
+      }
+      else if(val>min){
+        data.push(val);
+      }else{
+       data.push(2*val-min);
+       min=val;
+      }
+
     }
 
     int pop() {
-      // write your code here
+      if(data.peek()<min){
+        int t=min;
+        min=2*min-data.peek();
+        data.pop();
+        return  t;
+      }
+      return data.pop();
     }
 
     int top() {
-      // write your code here
+      if(data.peek()<min){
+        return min;
+      }
+      return data.peek() ;
     }
 
     int min() {
-      // write your code here
+      return min;
     }
   }
 

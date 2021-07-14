@@ -1,6 +1,7 @@
-#include<iostream>
-#include<stack>
-#include<string>
+// #include<iostream>
+// #include<stack>
+// #include<string>
+#include"bits/stdc++.h"
 using namespace std;
 
 int doShit(int val1 ,int val2,char c){
@@ -41,6 +42,13 @@ void convert(string s){
 	cout<<pre.top()<<endl;
 }
 int main(){
+	#ifndef ONLINE_JUDGE
+    freopen("inputf.in","r",stdin);
+    freopen("outputf.in","w",stdout);
+    freopen("errorf.in","w",stderr);
+	#endif
+    ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    while(1);
 	string s;
 	getline(cin,s);
 	convert(s);
