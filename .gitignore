@@ -35,6 +35,6 @@
 inputf.in
 outputf.in
 errorf.in
-DS_Store
+.DS_Store
 .vscode
 .dSYM
