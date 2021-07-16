@@ -38,3 +38,4 @@ errorf.in
 .DS_Store
 .vscode
 .dSYM
+*.class
