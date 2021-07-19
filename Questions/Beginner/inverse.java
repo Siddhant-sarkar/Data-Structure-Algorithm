@@ -13,5 +13,6 @@ public static void main(String[] args) {
         counter++;
     }
     System.out.println(ans/10);
+	sc.close();
  }
 }

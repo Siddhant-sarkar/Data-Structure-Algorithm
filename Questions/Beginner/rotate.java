@@ -37,5 +37,6 @@ public class rotate{
 			}
 		}
 		System.out.println(n);
+		scanner.close();
 	}
 }

@@ -12,5 +12,6 @@ public class pyTriplet{
 
     if(ma*ma == m) System.out.println("true");
     else System.out.println("false");
+		sc.close();
    }
   }

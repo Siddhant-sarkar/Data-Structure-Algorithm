@@ -14,5 +14,6 @@ public class prime{
 			}
 		}
 		if(n>2) System.out.println(n);
+		sc.close();
 	}
 }

@@ -8,5 +8,6 @@ public class bulbs{
 			System.out.println(c*c);
 			c++;
 		}
+		sc.close();
 	}
 }

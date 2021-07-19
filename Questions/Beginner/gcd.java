@@ -11,5 +11,6 @@ public class gcd{
 
 		System.out.println(g);
 		System.out.println(a*b/g);
+		sc.close();
 	}
 }
