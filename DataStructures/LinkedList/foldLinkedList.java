@@ -1,7 +1,6 @@
 import java.io.*;
-import java.util.*;
 
-public class kreverseLList {
+public class foldLinkedList {
   public static class Node {
     int data;
     Node next;
@@ -330,34 +329,88 @@ public class kreverseLList {
     }
 
     public void kReverse(int k) {
-      LinkedList p=null;
-      while(this.size()>0){
-        LinkedList c=new LinkedList();
-        if(this.size()>=k){
-          for(int i=0;i<k;i++){
-            int val=this.getFirst();
+      LinkedList prev = null;
+
+      while (this.size > 0) {
+        LinkedList curr = new LinkedList();
+
+        if (this.size >= k) {
+          for (int i = 0; i < k; i++) {
+            int val = this.getFirst();
             this.removeFirst();
-            c.addFirst(val);
+            curr.addFirst(val);
           }
-        }else{
-          int os=this.size();
-          for(int i=0;i<os;i++){
-            int val=this.getFirst();
+        } else {
+          int sz = this.size;
+          for (int i = 0; i < sz; i++) {
+            int val = this.getFirst();
             this.removeFirst();
-            c.addLast(val);
+            curr.addLast(val);
           }
         }
-        if(p==null){
-          p=c;
-        }else{
-          p.tail.next=c.head;
-          p.tail=c.tail;
-          p.size+=c.size;
+
+        if (prev == null) {
+          prev = curr;
+        } else {
+          prev.tail.next = curr.head;
+          prev.tail = curr.tail;
+          prev.size += curr.size;
         }
       }
-      this.head=p.head;
-      this.tail=p.tail;
-      this.size=p.size;
+
+      this.head = prev.head;
+      this.tail = prev.tail;
+      this.size = prev.size;
+    }
+
+    private void displayReverseHelper(Node node) {
+      if (node == null) {
+        return;
+      }
+      displayReverseHelper(node.next);
+      System.out.print(node.data + " ");
+    }
+
+    public void displayReverse() {
+      displayReverseHelper(head);
+      System.out.println();
+    }
+
+    private void reversePRHelper(Node node) {
+      if (node == tail) {
+        return;
+      }
+      reversePRHelper(node.next);
+      node.next.next = node;
+    }
+
+    public void reversePR() {
+      reversePRHelper(head);
+      Node temp = head;
+      head = tail;
+      tail = temp;
+      tail.next = null;
+    }
+
+    Node l;
+    public void foldHelper(Node n,int lin){
+      if(n==null || l==null){
+        return;
+      }
+      foldHelper(n.next,lin+1);
+      if(lin>size/2){
+        Node k=l.next;
+        l.next=n;
+        n.next=k;
+        l=k;
+      }else if(lin==size/2){
+        tail=n;
+        tail.next=null;
+      }
+    }
+    public void fold() {
+      l=head;
+      foldHelper(head,0);
     }
   }
 
@@ -372,16 +425,14 @@ public class kreverseLList {
       l1.addLast(d);
     }
 
-    int k = Integer.parseInt(br.readLine());
     int a = Integer.parseInt(br.readLine());
     int b = Integer.parseInt(br.readLine());
 
     l1.display();
-    l1.kReverse(k);
+    l1.fold();
     l1.display();
     l1.addFirst(a);
     l1.addLast(b);
     l1.display();
   }
 }
-                        

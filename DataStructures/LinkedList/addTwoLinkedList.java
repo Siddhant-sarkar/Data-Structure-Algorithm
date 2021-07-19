@@ -1,7 +1,6 @@
 import java.io.*;
-import java.util.*;
 
-public class kreverseLList {
+public class addTwoLinkedList {
   public static class Node {
     int data;
     Node next;
@@ -330,34 +329,93 @@ public class kreverseLList {
     }
 
     public void kReverse(int k) {
-      LinkedList p=null;
-      while(this.size()>0){
-        LinkedList c=new LinkedList();
-        if(this.size()>=k){
-          for(int i=0;i<k;i++){
-            int val=this.getFirst();
+      LinkedList prev = null;
+
+      while (this.size > 0) {
+        LinkedList curr = new LinkedList();
+
+        if (this.size >= k) {
+          for (int i = 0; i < k; i++) {
+            int val = this.getFirst();
             this.removeFirst();
-            c.addFirst(val);
+            curr.addFirst(val);
           }
-        }else{
-          int os=this.size();
-          for(int i=0;i<os;i++){
-            int val=this.getFirst();
+        } else {
+          int sz = this.size;
+          for (int i = 0; i < sz; i++) {
+            int val = this.getFirst();
             this.removeFirst();
-            c.addLast(val);
+            curr.addLast(val);
           }
         }
-        if(p==null){
-          p=c;
-        }else{
-          p.tail.next=c.head;
-          p.tail=c.tail;
-          p.size+=c.size;
+
+        if (prev == null) {
+          prev = curr;
+        } else {
+          prev.tail.next = curr.head;
+          prev.tail = curr.tail;
+          prev.size += curr.size;
         }
       }
-      this.head=p.head;
-      this.tail=p.tail;
-      this.size=p.size;
+
+      this.head = prev.head;
+      this.tail = prev.tail;
+      this.size = prev.size;
+    }
+
+    private void displayReverseHelper(Node node) {
+      if (node == null) {
+        return;
+      }
+      displayReverseHelper(node.next);
+      System.out.print(node.data + " ");
+    }
+
+    public void displayReverse() {
+      displayReverseHelper(head);
+      System.out.println();
+    }
+
+    private void reversePRHelper(Node node) {
+      if (node == tail) {
+        return;
+      }
+      reversePRHelper(node.next);
+      node.next.next = node;
+    }
+
+    public void reversePR() {
+      reversePRHelper(head);
+      Node temp = head;
+      head = tail;
+      tail = temp;
+      tail.next = null;
+    }
+
+    public static int addTwoList(Node r1,int p1,Node r2,int p2, LinkedList l1){
+      if(r1==null && r2==null){
+        return 0;
+      }
+      int val=0;
+      if(p1>p2){
+        int car=addTwoList(r1.next, p1-1, r2, p2, l1);
+        val=r1.data+car;
+      }else if(p1<p2){
+        int car=addTwoList(r1, p1, r2.next, p2-1, l1);
+        val=r2.data+car;
+      }else{
+        int car=addTwoList(r1.next, p1-1, r2.next, p2-1, l1);
+        val=r1.data+r2.data+car;
+      }
+      l1.addFirst(val%10);
+      return val/10;
+    }
+
+    public static LinkedList addTwoLists(LinkedList one, LinkedList two) {
+      LinkedList l1=new LinkedList();
+      int car=addTwoList(one.head,one.size, two.head, two.size, l1);
+      if(car>0) l1.addFirst(car);
+      return l1;
     }
   }
 
@@ -372,16 +430,24 @@ public class kreverseLList {
       l1.addLast(d);
     }
 
-    int k = Integer.parseInt(br.readLine());
+    int n2 = Integer.parseInt(br.readLine());
+    LinkedList l2 = new LinkedList();
+    String[] values2 = br.readLine().split(" ");
+    for (int i = 0; i < n2; i++) {
+      int d = Integer.parseInt(values2[i]);
+      l2.addLast(d);
+    }
+
+    LinkedList sum = LinkedList.addTwoLists(l1, l2);
+
     int a = Integer.parseInt(br.readLine());
     int b = Integer.parseInt(br.readLine());
 
     l1.display();
-    l1.kReverse(k);
-    l1.display();
-    l1.addFirst(a);
-    l1.addLast(b);
-    l1.display();
+    l2.display();
+    sum.display();
+    sum.addFirst(a);
+    sum.addLast(b);
+    sum.display();
   }
 }
-                        

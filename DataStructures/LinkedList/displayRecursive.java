@@ -1,7 +1,6 @@
 import java.io.*;
-import java.util.*;
 
-public class kreverseLList {
+public class displayRecursive {
   public static class Node {
     int data;
     Node next;
@@ -330,34 +329,50 @@ public class kreverseLList {
     }
 
     public void kReverse(int k) {
-      LinkedList p=null;
-      while(this.size()>0){
-        LinkedList c=new LinkedList();
-        if(this.size()>=k){
-          for(int i=0;i<k;i++){
-            int val=this.getFirst();
+      LinkedList prev = null;
+
+      while (this.size > 0) {
+        LinkedList curr = new LinkedList();
+
+        if (this.size >= k) {
+          for (int i = 0; i < k; i++) {
+            int val = this.getFirst();
             this.removeFirst();
-            c.addFirst(val);
+            curr.addFirst(val);
           }
-        }else{
-          int os=this.size();
-          for(int i=0;i<os;i++){
-            int val=this.getFirst();
+        } else {
+          int sz = this.size;
+          for (int i = 0; i < sz; i++) {
+            int val = this.getFirst();
             this.removeFirst();
-            c.addLast(val);
+            curr.addLast(val);
           }
         }
-        if(p==null){
-          p=c;
-        }else{
-          p.tail.next=c.head;
-          p.tail=c.tail;
-          p.size+=c.size;
+
+        if (prev == null) {
+          prev = curr;
+        } else {
+          prev.tail.next = curr.head;
+          prev.tail = curr.tail;
+          prev.size += curr.size;
         }
       }
-      this.head=p.head;
-      this.tail=p.tail;
-      this.size=p.size;
+
+      this.head = prev.head;
+      this.tail = prev.tail;
+      this.size = prev.size;
+    }
+
+    private void displayReverseHelper(Node node){
+      if(node==null) return ;
+      displayReverseHelper(node.next);
+      System.out.print(node.data+" ");
+
+    }
+
+    public void displayReverse(){
+      displayReverseHelper(head);
+      System.out.println();
     }
   }
 
@@ -371,17 +386,14 @@ public class kreverseLList {
       int d = Integer.parseInt(values1[i]);
       l1.addLast(d);
     }
-
-    int k = Integer.parseInt(br.readLine());
+    
     int a = Integer.parseInt(br.readLine());
     int b = Integer.parseInt(br.readLine());
 
     l1.display();
-    l1.kReverse(k);
-    l1.display();
-    l1.addFirst(a);
-    l1.addLast(b);
+    l1.displayReverse();
+    l1.addLast(a);
+    l1.addFirst(b);
     l1.display();
   }
 }
-                        
