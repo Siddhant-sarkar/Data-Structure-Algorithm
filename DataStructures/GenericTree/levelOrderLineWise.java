@@ -79,10 +79,10 @@ public class levelOrderLineWise {
     return h;
   }
 
-  public static void traversals(Node node){
+  public static void traversals(Node node) {
     System.out.println("Node Pre " + node.data);
 
-    for(Node child: node.children){
+    for (Node child : node.children) {
       System.out.println("Edge Pre " + node.data + "--" + child.data);
       traversals(child);
       System.out.println("Edge Post " + node.data + "--" + child.data);
@@ -91,43 +91,54 @@ public class levelOrderLineWise {
     System.out.println("Node Post " + node.data);
   }
 
-  // public static void levelOrderLinewise(Node node){
-  //   Queue<Node>qu=new LinkedList<>();
-  //   qu.add(node);
-  //   Queue<Node>qu2=new LinkedList<>();
-  //   while(qu.size()>0 || qu2.size()>0){
-  //     if(qu.size()==0){
-  //       while(qu2.size()>0){
-  //         node=qu2.remove();
-  //         System.out.print(node.data+" ");
-  //         for(Node n:node.children) qu.add(n);
-  //       }
-  //     }else{
-  //       while(qu.size()>0){
-  //         node=qu.remove();
-  //         System.out.print(node.data+" ");
-  //         for(Node n:node.children){
-  //           qu2.add(n);
-  //         }
-  //       }
-  //     }
-  //     System.out.println();
-  //   }
-  // }
-
-  public static void levelOrderLinewise(Node node){
-    Queue<Node> mq=new LinkedList<>();
+  public static void levelOrderLinewise1(Node node) {
+    Queue<Node> mq = new LinkedList<>();
     mq.add(node);
-    Queue<Node> cq=new LinkedList<>();
-    while(mq.size()>0){
-      node =mq.remove();
-      System.out.print(node.data+" ");
-      for(Node n:node.children) cq.add(n);
-      if(mq.isEmpty()){
-        mq=cq;
-        cq=new LinkedList<>();
+    mq.add(null);
+    while (mq.size() > 0) {
+      node = mq.remove();
+      if (node != null) {
+        System.out.print(node.data + " ");
+        for (Node n : node.children)
+          mq.add(n);
+      } else {
+        if (mq.size() > 0) {
+          mq.add(null);
+          System.out.println();
+        }
+      }
+    }
+  }
+
+  public static void levelOrderLinewise2(Node node) {
+    Queue<Node> mq = new LinkedList<>();
+    mq.add(node);
+    Queue<Node> cq = new LinkedList<>();
+    while (mq.size() > 0) {
+      node = mq.remove();
+      System.out.print(node.data + " ");
+      for (Node n : node.children)
+        cq.add(n);
+      if (mq.isEmpty()) {
+        mq = cq;
+        cq = new LinkedList<>();
         System.out.println();
       }
+    }
+
+  }
+
+  public static void levelOrderLinewise3(Node node){
+    Queue<Node> mq = new LinkedList<>();
+    mq.add(node);
+    while(mq.size()>0){
+      int s=mq.size();
+      for(int i=0;i<s;i++){
+        node = mq.remove();
+        System.out.print(node.data+" ");
+        for(Node n:node.children) mq.add(n);
+      }
+      System.out.println();
     }
 
   }
@@ -142,7 +153,7 @@ public class levelOrderLineWise {
     }
 
     Node root = construct(arr);
-    levelOrderLinewise(root);
+    levelOrderLinewise3(root);
   }
 
 }
