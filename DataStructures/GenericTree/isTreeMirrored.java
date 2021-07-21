@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class isTreeMirrored {
   private static class Node {
     int data;
     ArrayList<Node> children = new ArrayList<>();
@@ -80,7 +80,11 @@ public class Main {
   }
 
   public static boolean IsSymmetric(Node node) {
-    // write your code here
+    for(int i=0, j=node.children.size()-1;i<node.children.size() && j>=0;i++,j--){
+      if(node.children.get(i).children.size()!=node.children.get(j).children.size()) return false;
+      if(!(IsSymmetric(node.children.get(i)) && IsSymmetric(node.children.get(j)))) return false;
+    }
+    return true;
   }
 
   public static void main(String[] args) throws Exception {
