@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class printKNodesAway {
+public class Main {
   public static class Node {
     int data;
     Node left;
@@ -79,36 +79,8 @@ public class printKNodesAway {
     display(node.right);
   }
 
-  static ArrayList<Node> arr;
-  public static boolean find(Node node,int data){
-    if(node==null ) return false;
-    if(node.data==data){
-      arr.add(node);
-      return true;
-    }else if(find(node.left,data)==true){
-      arr.add(node);
-      return true;
-    }else if(find(node.right,data)==true){
-      arr.add(node);
-      return true;
-    }else{
-      return false;
-    }
-  }
-  public static void printKLevelsDown(Node node,int k,Node block){
-    if(node == null ||k<0  ) return ;
-    if(node==block) return;
-    if(k==0) System.out.println(node.data);
-    printKLevelsDown(node.left,k-1,block);
-    printKLevelsDown(node.left,k-1,block);
-  }
-  public static void printKNodesFar(Node node, int data, int k) {
-    arr= new ArrayList<>();
-    find(node,data);
-    for(int i=0;i<arr.size();i++){
-      printKLevelsDown(arr.get(i),k-i,(i==0)?null:arr.get(i-1));
-
-    }
+  public static void pathToLeafFromRoot(Node node, String path, int sum, int lo, int hi){
+    
   }
 
   public static void main(String[] args) throws Exception {
@@ -124,12 +96,11 @@ public class printKNodesAway {
       }
     }
 
-    int data = Integer.parseInt(br.readLine());
-    int k = Integer.parseInt(br.readLine());
+    int lo = Integer.parseInt(br.readLine());
+    int hi = Integer.parseInt(br.readLine());
 
     Node root = construct(arr);
-    // printKLevelsDown(node,k,root);
-    printKNodesFar(root, data, k);
+    pathToLeafFromRoot(root, "", 0, lo, hi);
   }
 
 }
