@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class pathToLeaf {
   public static class Node {
     int data;
     Node left;
@@ -79,8 +79,29 @@ public class Main {
     display(node.right);
   }
 
+  static ArrayList<String> str;
+  public static void printAllLeafs(Node node,String s){
+    if(node.left==null && node.right==null){
+      s+=node.data+" ";
+      str.add(s);
+      return;
+    }
+    printAllLeafs(node.left,s+node.data+" ");
+    printAllLeafs(node.right,s+node.data+" ");
+  }
   public static void pathToLeafFromRoot(Node node, String path, int sum, int lo, int hi){
-    
+    if(node ==null )return ;
+    if(node.left==null && node.right==null){
+      sum+=node.data;
+      if(sum>=lo && sum<=hi){
+        path+=node.data+" ";
+        System.out.println(path);
+        return;
+      }
+      return;
+    }
+    pathToLeafFromRoot(node.left,path+node.data+" ",sum+node.data,lo,hi);
+    pathToLeafFromRoot(node.right,path+node.data+" ",sum+node.data,lo,hi);
   }
 
   public static void main(String[] args) throws Exception {
@@ -99,7 +120,11 @@ public class Main {
     int lo = Integer.parseInt(br.readLine());
     int hi = Integer.parseInt(br.readLine());
 
+    str=new ArrayList<>();
     Node root = construct(arr);
+    // display(root);
+    // printAllLeafs(root,"");
+    // for(String s:str) System.out.println(s);
     pathToLeafFromRoot(root, "", 0, lo, hi);
   }
 

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class printKNodesAway {
+public class isBinarySearchTree {
   public static class Node {
     int data;
     Node left;
@@ -78,37 +78,29 @@ public class printKNodesAway {
     display(node.left);
     display(node.right);
   }
-  public static void KLevel(Node node ,int k,Node b){
-    if(node == null || k<0 || node==b) return;
-    if(k==0) System.out.println(node.data);
-    KLevel(node.left,k-1,b);
-    KLevel(node.right,k-1,b);
-  }
-  public static ArrayList<Node> nodeToRootPath(Node node,int data){
-    if(node==null){
-      return new ArrayList<Node>();
+
+  public static int height(Node node) {
+    if (node == null) {
+      return -1;
     }
-    ArrayList<Node> l= nodeToRootPath(node.left,data);
-    ArrayList<Node> r= nodeToRootPath(node.right,data);
-    if(l.size()>0){
-      l.add(node);
-      return l;
-    }else if(r.size()>0){
-      r.add(node);
-      return r;
-    }else if(node.data==data){
-      l.add(node);
-      return l;
-    } 
-    return new ArrayList<Node>();
-  }
-  public static void printKNodesFar(Node node, int data, int k) {
-    ArrayList<Node> path=nodeToRootPath(node,data);
-    for(int i=0;i<path.size() && k-i>=0;i++){
-      KLevel(path.get(i),k-i,(i==0)?null:path.get(i-1));
-    }
+
+    int lh = height(node.left);
+    int rh = height(node.right);
+
+    int th = Math.max(lh, rh) + 1;
+    return th;
   }
 
+ 
+  
+  public static boolean isBinarySearchTree(Node node){
+    if(node==null) return true;
+    if(node.left==null || node.right==null) return true;
+    if(isBinarySearchTree(node.left)==false) return false;
+    if(isBinarySearchTree(node.right)==false) return false;
+    if(node.data>=node.left.data && node.data<=node.right.data) return true;
+    return false;
+  }
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
@@ -122,11 +114,9 @@ public class printKNodesAway {
       }
     }
 
-    int data = Integer.parseInt(br.readLine());
-    int k = Integer.parseInt(br.readLine());
-
     Node root = construct(arr);
-    printKNodesFar(root, data, k);
+    // isBinarySearchTree(root);
+    System.out.println(isBinarySearchTree(root));
   }
 
 }

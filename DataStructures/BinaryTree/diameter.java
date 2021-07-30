@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class printKNodesAway {
+public class diameter {
   public static class Node {
     int data;
     Node left;
@@ -78,35 +78,51 @@ public class printKNodesAway {
     display(node.left);
     display(node.right);
   }
-  public static void KLevel(Node node ,int k,Node b){
-    if(node == null || k<0 || node==b) return;
-    if(k==0) System.out.println(node.data);
-    KLevel(node.left,k-1,b);
-    KLevel(node.right,k-1,b);
+
+  public static int height(Node node) {
+    if (node == null) {
+      return -1;
+    }
+
+    int lh = height(node.left);
+    int rh = height(node.right);
+
+    int th = Math.max(lh, rh) + 1;
+    return th;
   }
-  public static ArrayList<Node> nodeToRootPath(Node node,int data){
+
+// here we are solving two questions with one 
+  // since in the post order or diameter function we have call height of the tree 
+  // we are going to increase the time complexity of the function to the O(n2)
+  public static int diameter1(Node node) {
+    if(node==null ) return 0;
+    int ld=diameter1(node.left);
+    int rd=diameter1(node.right);
+    int k=height(node.left)+height(node.right)+2;
+    return Math.max(ld,Math.max(rd,k));
+  }
+  // The new methord starts here 
+  public static class DiaPari{
+    int dia;
+    int height;
+
+    DiaPari(int dia,int height){
+      this.height=height;
+      this.dia=dia;
+    }
+  }
+  public static DiaPari diameter(Node node){
     if(node==null){
-      return new ArrayList<Node>();
+      return new DiaPari(0,-1);
     }
-    ArrayList<Node> l= nodeToRootPath(node.left,data);
-    ArrayList<Node> r= nodeToRootPath(node.right,data);
-    if(l.size()>0){
-      l.add(node);
-      return l;
-    }else if(r.size()>0){
-      r.add(node);
-      return r;
-    }else if(node.data==data){
-      l.add(node);
-      return l;
-    } 
-    return new ArrayList<Node>();
-  }
-  public static void printKNodesFar(Node node, int data, int k) {
-    ArrayList<Node> path=nodeToRootPath(node,data);
-    for(int i=0;i<path.size() && k-i>=0;i++){
-      KLevel(path.get(i),k-i,(i==0)?null:path.get(i-1));
-    }
+    DiaPari l=diameter(node.left);
+    DiaPari r= diameter(node.right);
+
+    DiaPari t=new DiaPari(0,0);
+    t.height=Math.max(l.height,r.height)+1;
+    int freq= l.height+r.height+2;
+    t.dia=Math.max(freq,Math.max(l.dia,r.dia));
+    return t;
   }
 
   public static void main(String[] args) throws Exception {
@@ -122,11 +138,9 @@ public class printKNodesAway {
       }
     }
 
-    int data = Integer.parseInt(br.readLine());
-    int k = Integer.parseInt(br.readLine());
-
     Node root = construct(arr);
-    printKNodesFar(root, data, k);
+    DiaPari t= diameter(root);
+    System.out.println(t.dia);
   }
 
 }
