@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class isBinarySearchTree {
+public class largestBinarySubtree{
   public static class Node {
     int data;
     Node left;
@@ -78,43 +78,42 @@ public class isBinarySearchTree {
     display(node.left);
     display(node.right);
   }
-
-  public static int height(Node node) {
-    if (node == null) {
-      return -1;
-    }
-
-    int lh = height(node.left);
-    int rh = height(node.right);
-
-    int th = Math.max(lh, rh) + 1;
-    return th;
-  }
-
-  public static class BST{
+  
+  public static class  bst{
     boolean found;
     int min;
     int max;
+    int size;
+    Node root;
   }
-  
-  public static BST isBST(Node node){
+  public static bst largestBST(Node node){
     if(node==null){
-      BST t= new BST();
+      bst t=new bst();
       t.found=true;
+      t.size=0;
       t.min=Integer.MAX_VALUE;
       t.max=Integer.MIN_VALUE;
       return t;
     }
-    BST l= isBST(node.left);
-    BST r= isBST(node.right);
-    BST m=new BST() ;
-
-    m.found=l.found && r.found && (node.data >=l.max && node.data<=r.min);
-    m.min=Math.min(node.data,Math.min(l.min,r.min));
-    m.max=Math.max(node.data,Math.max(l.max,r.max));
-    return m;
+    bst l= largestBST(node.left);
+    bst r= largestBST(node.right);
+    bst n=new bst();
+    n.found=l.found && r.found && (node.data>=l.max && node.data<=r.min);
+    n.max=Math.max(node.data ,Math.max(l.max,r.max));
+    n.min=Math.min(node.data,Math.min(l.min,r.min));
+    if(n.found) {
+      n.root=node;
+      n.size=l.size+r.size+1;
+    }else if(l.size>r.size){
+      n.root=l.root;
+      n.size=l.size;
+    }else{
+      n.root=r.root;
+      n.size=r.size;
+    }
+    return n;
   }
-
+  
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
@@ -129,7 +128,9 @@ public class isBinarySearchTree {
     }
 
     Node root = construct(arr);
-    System.out.println(isBST(root).found);
+    bst t=largestBST(root);
+    System.out.println(t.root.data+"@"+t.size);
+
   }
 
 }
