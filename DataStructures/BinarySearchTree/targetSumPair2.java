@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class targetSumPair {
+public class targetSumPair2 {
   public static class Node {
     int data;
     Node left;
@@ -78,49 +78,33 @@ public class targetSumPair {
     display(node.left);
     display(node.right);
   }
-  // static ArrayList<Integer> arr;
-  // public static void traverse(Node node){
-  //   if(node==null) return ;
-  //   traverse(node.left);
-  //   arr.add(node.data);
-  //   traverse(node.right);
-  // }
-  // public static void find(Node node,int data){
-  //   arr= new ArrayList();
-  //   traverse(node);
-  //   int i=0,j=arr.size()-1;
-  //   // System.out.println(arr);
-  //   while(i<j){
-  //     int sum=arr.get(i)+arr.get(j);
-  //     if(sum==data){
-  //       System.out.println(arr.get(i)+" "+arr.get(j));
-  //       i++;j--;
-  //     }else if(sum>data){
-  //       j--;
-  //     }else{
-  //       i++;
-  //     }
-  //   }
-  // }
 
-  public static boolean find(Node node,int data){
-    if(node==null ) return false;
-    if(node.data==data) return true;
-    else if(node.data>data){
-      return find(node.left,data);
-    }else{
-      return find(node.right,data);
-    }
-  }
-  public static void printPairs(Node root,Node node,int sum){
+  static ArrayList<Integer> arr;
+
+  public static void traverse(Node node){
     if(node==null) return ;
-    printPairs(root,node.left,sum);
-    int c=sum-node.data;
-    if(node.data<c){
-      if(find(root,c)) System.out.println(node.data +" "+(c));
-    }
-    printPairs(root,node.right,sum);
+    traverse(node.left);
+    arr.add(node.data);
+    traverse(node.right);
   }
+  public static void find(Node node,int data){
+    arr= new ArrayList();
+    traverse(node);
+    int i=0,j=arr.size()-1;
+    // System.out.println(arr);
+    while(i<j){
+      int sum=arr.get(i)+arr.get(j);
+      if(sum==data){
+        System.out.println(arr.get(i)+" "+arr.get(j));
+        i++;j--;
+      }else if(sum>data){
+        j--;
+      }else{
+        i++;
+      }
+    }
+  }
+  
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
@@ -137,7 +121,7 @@ public class targetSumPair {
     int sum = Integer.parseInt(br.readLine());
 
     Node root = construct(arr);
-    printPairs(root,root,sum);
+    find(root,sum);
   }
 
 }
