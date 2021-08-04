@@ -12,7 +12,9 @@ public class priorityQueue{
 
     public void add(int val) {
      data.add(val);
-     upheapify(data.size()-1);
+     for(int i=data.size()/2-1;i>0;i--){
+      downHeapify(i);
+     }
     }
 
     public int remove() {
