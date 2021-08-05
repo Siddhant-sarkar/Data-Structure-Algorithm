@@ -59,7 +59,6 @@ public class graphMultisolver{
       System.out.println("Largest Path = " + lpath + "@" + lpathwt);
       System.out.println("Just Larger Path than " + criteria + " = " + cpath + "@" + cpathwt);
       System.out.println("Just Smaller Path than " + criteria + " = " + fpath + "@" + fpathwt);
-      for(int i=1;i<k;i++) pq.remove();
       System.out.println(k + "th largest path = " + pq.peek().psf + "@" + pq.peek().wsf);
    }
 
@@ -73,7 +72,7 @@ public class graphMultisolver{
    static Integer cpathwt = Integer.MAX_VALUE;
    static String fpath;
    static Integer fpathwt = Integer.MIN_VALUE;
-   static PriorityQueue<Pair> pq = new PriorityQueue<>(Collections.reverseOrder());
+   static PriorityQueue<Pair> pq = new PriorityQueue<>();
    public static void multisolver(ArrayList<Edge>[] graph, int src, int dest, boolean[] visited, int criteria, int k, String psf, int wsf) {
      if(src==dest) {
       if(wsf<spathwt){
@@ -92,7 +91,14 @@ public class graphMultisolver{
          fpathwt=wsf;
          fpath=psf;
       }
-      pq.add(new Pair(wsf,psf));
+      if(pq.size()<=k) pq.add(new Pair(wsf,psf));
+      else{
+         if(pq.peek().wsf<wsf){
+            pq.remove();
+            pq.add(new Pair(wsf,psf));
+         }
+      }
+
       return ;
      }
      visited[src]=true;
