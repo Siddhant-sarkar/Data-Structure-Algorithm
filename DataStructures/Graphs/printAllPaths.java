@@ -16,14 +16,13 @@ public class printAllPaths {
    static boolean []vis;
    public static void printPath(ArrayList<Edge> graph[],int src,int dest ,String s){
       if(src==dest){
-         s+=src;
         System.out.println(s); 
         return;
       }
       vis[src]=true;
       for(Edge edge:graph[src]){
          if(vis[edge.nbr]==false){
-            printPath(graph,edge.nbr,dest,s+src);
+            printPath(graph,edge.nbr,dest,s+edge.nbr);
          }
       }
       vis[src]=false;
@@ -73,7 +72,7 @@ public class printAllPaths {
       int dest = Integer.parseInt(br.readLine());
       vis=new boolean[vtces];
 
-      printPath(graph,src,dest,"");
+      printPath(graph,src,dest,""+src);
       // ArrayList<String> st= printPathDown(graph,src,dest,vis);
       // for(String s : st){
       //    System.out.println(s);
