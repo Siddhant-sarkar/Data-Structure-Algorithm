@@ -39,20 +39,21 @@ public class BFS {
       }
 
       int src = Integer.parseInt(br.readLine());
-      BFS(graph,2);
+      BFS(graph,src);
    }
    public static void BFS(ArrayList<Edge>[] graph,int src){
-      boolean [] arr=new boolean[graph.length];
+      // re mark* work add*
+      boolean [] visited=new boolean[graph.length];
       Queue<Pair> mq=new LinkedList<>();
-      mq.add(new Pair(v,src+""));
-      arr[src]=true;
+      mq.add(new Pair(src,src+""));
       while(mq.size()>0){
          Pair p= mq.remove();
-         if(visited[p.nbr]==true) continue;
+         if(visited[p.v]==true) continue;
+         visited[p.v]=true;
          System.out.println(p.v+"@"+p.psf);
-         for(Edge e: graph[r.v]){
-            if(visite[p.nbr]==false){
-               mq.add(new Pair(p.nbr,psf+p.nbr));
+         for(Edge e: graph[p.v]){
+            if(visited[e.nbr]==false){
+               mq.add(new Pair(e.nbr,p.psf+e.nbr));
             }
          }
       }
