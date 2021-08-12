@@ -1,8 +1,48 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class cryparithmetic{
 
+  public static boolean sumSet(HashMap<Character,Integer> charIntMap,String s1,String s2,String s3){
+    int n1=0,n2=0,n3=0;
+    for(int i=0;i<s1.length();i++){
+      n1+=charIntMap.get(s1.charAt(i));
+      n1*=10;
+    }n1/=10;
+    for(int i=0;i<s2.length();i++){
+      n2+=charIntMap.get(s2.charAt(i));
+      n2*=10;
+    }n2/=10;
+    for(int i=0;i<s3.length();i++){
+      n3+=charIntMap.get(s3.charAt(i));
+      n3*=10;
+    }n3/=10;
+    if(n1+n2==n3) return true;
+    return false;
+  }
+  public static void solution(String unique, int idx,HashMap<Character, Integer> charIntMap, boolean[] usedNumbers, String s1, String s2, String s3) {
+    if(idx==unique.length()){
+      if(sumSet(charIntMap,s1,s2,s3)){
+        for(int i=0;i<26;i++){
+          char c=(char)('a'+i);
+          if(charIntMap.containsKey(c)) System.out.print(c+"-"+charIntMap.get(c)+" ");
+        }
+        System.out.println();
+        // System.out.println(charIntMap);
+      }
+      return;
+    }
+   for(int i=0;i<10;i++){
+      if(usedNumbers[i]==false){
+        usedNumbers[i]=true;
+        charIntMap.put(unique.charAt(idx),i);
+        solution(unique,idx+1,charIntMap,usedNumbers,s1,s2,s3);
+        charIntMap.put(unique.charAt(idx),-1);
+        usedNumbers[i]=false;
+      }
+    }
+
+  }
   public static void main(String[] args) {
     Scanner scn = new Scanner(System.in);
     String s1 = scn.nextLine();
@@ -34,16 +74,8 @@ public class Main {
 
     boolean[] usedNumbers = new boolean[10];
     solution(unique, 0, charIntMap, usedNumbers, s1, s2, s3);
-  }
-
-  
-  public static void solution(String unique, int idx,HashMap<Character, Integer> charIntMap, boolean[] usedNumbers, String s1, String s2, String s3) {
-    if(idx==unique.length()){
-      System.out.println(charIntMap);
-      return;
-    }
-    
-    
+    // System.out.println(unique);
+    // System.out.println(charIntMap);
   }
 
 }
