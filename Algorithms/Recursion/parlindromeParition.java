@@ -4,17 +4,15 @@ import java.util.*;
 public class parlindromeParition{
 
 	public static void solution(String str,String asf) {
-		if(str.length()==1){
+		if(str.length()==0){
 			System.out.println(asf);
 			return;
 		}
-		for(int i=1;i<str.length();i++){
-			String s= str.substring(0,i);
-			String p=str.substring(i);
+		for(int i=0;i<str.length();i++){
+			String s= str.substring(0,i+1);
+			String p=str.substring(i+1);
 			if(isPalindrome(s)){
-				String t=asf;
-				t+="("+s+") ";
-				solution(p,t);
+				solution(p,asf+"("+s+") ");
 			}
 		}
 	}
@@ -27,7 +25,6 @@ public class parlindromeParition{
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
 		String str = scn.nextLine();
-		str+='*';
 		solution(str,"" );
 	}
 
