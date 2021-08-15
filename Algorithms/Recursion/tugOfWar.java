@@ -19,26 +19,22 @@ public class tugOfWar {
 		if(vidx==arr.length){
 			if(Math.abs(soset1-soset2)<mindiff && (set1.size()==set2.size() || Math.abs(set1.size()-set2.size())==1)){
 				mindiff=Math.abs(soset1-soset2);
-				// System.out.println(mindiff);
 				ans="";
 				ans+=set1;
 				ans+=" ";
 				ans+=set2;
 			}
-			// System.out.println(set1 +"||"+set2);
 			return;
 		}
 		if(set1.size()<(arr.length+1)/2){
 			set1.add(arr[vidx]);
 			solve(arr,vidx+1,set1,set2,soset1+arr[vidx],soset2);
 			set1.remove(set1.size()-1);
-			// if(set1.size()==0) return;
 		}
 		if(set2.size()<(arr.length+1)/2){
 			set2.add(arr[vidx]);
 			solve(arr,vidx+1,set1,set2,soset1,soset2+arr[vidx]);
 			set2.remove(set2.size()-1);
-			// if(set2.size()==0) return;
 		}
 	}
 
