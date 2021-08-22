@@ -8,7 +8,6 @@ public class validWords {
 		for(int i=0;i<s.length();i++){
 			t|= 1<<s.charAt(i)-'a';
 		}
-		// System.out.println(Integer.toBinaryString(t));
 		return t;
 	}
 	public static void printArr(String[] words){
@@ -30,9 +29,7 @@ public class validWords {
 		for(int i=0;i<puzzles.length;i++){
 			int cnt=0;
 			for(int j=0;j<words.length;j++){
-				// System.out.print(puzzles[i].charAt(0));
 				int pos=puzzles[i].charAt(0)-'a';
-				// System.out.println(pos);
 				if((wb[j]& (1<<pos))>0){
 					if((wb[j]&pb[i])==wb[j]) {cnt++;}
 				}
