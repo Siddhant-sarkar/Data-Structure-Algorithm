@@ -23,8 +23,13 @@ public class twoDifferent {
       if((arr[i]&(rsb))!=0) n1^=arr[i];
       else n2^=arr[i];
     }
+    if(n1<n2){
     System.out.println(n1);
     System.out.println(n2);
+    }else{
+    System.out.println(n2);
+    System.out.println(n1);
+    }
   }
 
 }
