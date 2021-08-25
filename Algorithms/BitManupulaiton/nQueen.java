@@ -27,7 +27,7 @@ public class nQueen {
         cols ^= 1<<j;
         ndiag ^= 1<<(j+row);
         rdiag ^= 1<<(row-j+board.length-1);
-        solution(board,row+1,cols,ndiag,rdiag,asf+row+"-"+j+",");
+        solution(board,row+1,cols,ndiag,rdiag,asf+row+"-"+j+", ");
         cols ^= 1<<j;
         ndiag ^= 1<<(j+row);
         rdiag ^= 1<<(row-j+board.length-1);
