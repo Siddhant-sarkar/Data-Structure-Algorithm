@@ -10,8 +10,8 @@ public class countSetBits{
   }
 
   public static int solution(int n){
-    if(n==1 ){
-      return 1;
+    if(n==0 ){
+      return 0;
     }
     int x=0,pow=1;
     while(pow <= n) { x++; pow*=2;}
