@@ -26,9 +26,6 @@ public class russianDolls{
 			dl[i]=new Dolls(Integer.parseInt(arr[0]),Integer.parseInt(arr[1]));
 		}
 		Arrays.sort(dl);
-		// for(int i=0;i<dl.length;i++){
-		// 	System.out.println(dl[i].l+"  "+dl[i].b);
-		// }
 		// here goes the longest increasing subsequence part
 		int [] dp= new int[n];
 		int omax=0;
