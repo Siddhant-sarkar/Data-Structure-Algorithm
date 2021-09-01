@@ -7,7 +7,6 @@ public class bitonicSequence{
        int inc[] = new int[arr.length];
        int totalSum=Integer.MIN_VALUE;
        int dec[] = new int[arr.length];
-       // for the increasing sub sequene
        for(int i=0;i<arr.length;i++){
         Integer max= null;
         for(int j=0;j<i;j++){
@@ -18,7 +17,6 @@ public class bitonicSequence{
         if(max==null) inc[i]=1;
         else inc[i]=max+1;
        }
-       // for the decreasing sub sequence
        for(int i=arr.length-1;i>=0;i--){
         Integer max=null;
         for(int j=arr.length-1;j>i;j--){
