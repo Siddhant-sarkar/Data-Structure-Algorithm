@@ -16,6 +16,7 @@ public class warmup {
     System.out.println(n &(~(1<<j)));
     System.out.println(n ^ 1<<k);
     System.out.println(((n & mask)==0)?false:true);
+    scn.close();
   }
 
 }
