@@ -18,7 +18,7 @@ public class partition {
 			if(ans.get(ii).size()>0){
 				ans.get(ii).add(i);
 				solution(i+1,n,k,rssf,ans);
-				// ans.get(ii).remove(ii);
+				ans.get(ii).remove(ii);
 				ans.get(ii).remove(ans.get(ii).size()-1);
 			}else{
 				ans.get(ii).add(i);
