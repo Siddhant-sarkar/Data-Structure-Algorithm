@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Main{
+public class printAllLis{
     
     public static class Pair {
         int l;
@@ -81,4 +81,4 @@ public class Main{
 
         scn.close();
     }
-}}
+}

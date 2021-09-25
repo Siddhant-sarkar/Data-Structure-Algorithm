@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class longestPalindromicSubsequence{
+public class countPalindromicSubsequence{
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String s= sc.nextLine();

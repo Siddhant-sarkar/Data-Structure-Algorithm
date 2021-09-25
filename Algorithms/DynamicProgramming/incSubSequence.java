@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class incSubsequence{
+public class incSubSequence{
 	public static void liss(int[] arr){
 		int omax=0;
 		int[] dp = new int[arr.length];
