@@ -18,8 +18,8 @@ public class findWater {
         if(dp[i][j]>1.0){
           double spare=dp[i][j]-1.0;
           dp[i][j]=1.0;
-          dp[i+1][j]=spare/2.0;
-          dp[i+1][j+1]=spare/2.0;
+          dp[i+1][j]+=spare/2.0;
+          dp[i+1][j+1]+=spare/2.0;
         }
       }
     }
