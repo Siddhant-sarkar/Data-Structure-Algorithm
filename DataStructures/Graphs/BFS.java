@@ -53,6 +53,9 @@ public class BFS {
          System.out.println(p.v+"@"+p.psf);
          for(Edge e: graph[p.v]){
             if(visited[e.nbr]==false){
+               // just be more sure than 
+               // add them by marking them visited
+               // THIS WILL SAVE YOUR ASS ONE MORE TIME
                mq.add(new Pair(e.nbr,p.psf+e.nbr));
             }
          }
