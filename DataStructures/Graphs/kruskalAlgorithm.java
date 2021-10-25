@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class kruskalAlgorithm {
+public class Main {
 
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -37,54 +37,71 @@ public class kruskalAlgorithm {
     public int compareTo(Pair o) {
       return this.wt - o.wt;
     }
-    @Override
-   	public String toString(){
-   		return u+" "+v+" "+wt+"\n";
-   	}
-  }
-  public static boolean union(int x,int y){
-  	int lx=find(x);
-  	int ly=find(y);
-  	if(lx!=ly){
-  		if(rank[lx]>rank[ly]){
-  			parent[ly]=lx;
-  		}else if(rank[lx]<rank[ly]){
-  			parent[lx]=ly;
-  		}else{
-  			parent[lx]=ly;
-  			rank[ly]++;
-  		}
-  		return true;
-  	}
-  	return false;
-   	
-  }
-  public static int find(int x){
-  	if(parent[x]==x) return x;
-  	int temp= find(parent[x]);
-  	parent[x]=temp;
-  	return temp;
   }
 
   public static int minCostToSupplyWater(int n, int[][] pipes) {
-  	Pair [] parr= new Pair[n];
-  	for(int i=0;i<parr.length;i++){
-  		parr[i]= new Pair(pipes[i][0],pipes[i][1],pipes[i][2]);
-  	}
-  	parent=new int[n];
-  	rank=new int[n];
-  	for(int i=0;i<n;i++){
-  		parent[i]=i;
-  		rank[i]=1;
-  	}
-  	Arrays.sort(parr);
-  	int ans=0;
-  	for(int i=0;i<parr.length;i++){
-  		boolean merged = union(parr[i].u,parr[i].v);
-  		if(merged){
-  			ans+=parr[i].wt;
-  		}
-  	}
-  	return ans;
+    Pair[] edges = new Pair[pipes.length];
+
+    for (int i = 0; i < pipes.length; i++) {
+      int u = pipes[i][0];
+      int v = pipes[i][1];
+      int wt = pipes[i][2];
+      edges[i] = new Pair(u, v, wt);
+    }
+
+    int ans = 0;
+    Arrays.sort(edges);
+    parent = new int[n + 1];
+    rank = new int[n + 1];
+
+    for (int i = 0; i < parent.length; i++) {
+      parent[i] = i;
+      rank[i] = 1;
+    }
+
+    for (int i = 0; i < edges.length; i++) {
+      int u = edges[i].u;
+      int v = edges[i].v;
+      int wt = edges[i].wt;
+
+      boolean flag = union(u, v);
+      if (flag == false) {
+        ans += wt;
+      }
+    }
+
+    return ans;
+
+  }
+
+  public static int find(int x) {
+    if (parent[x] == x) {
+      return x;
+    }
+    int temp = find(parent[x]);
+    parent[x] = temp;
+    return temp;
+  }
+
+  public static boolean union(int x, int y) {
+    int lx = find(x);
+    int ly = find(y);
+
+    if (lx == ly) {
+      return true;
+    }
+
+    if (rank[lx] > rank[ly]) {
+      parent[ly] = lx;
+    } else if (rank[lx] < rank[ly]) {
+      parent[lx] = ly;
+    } else {
+      parent[lx] = ly;
+      rank[ly]++;
+    }
+
+    return false;
   }
 }
+
+                                
