@@ -1,33 +1,15 @@
-import java.util.*;
-public class arraylist_methods {
-    public static void main(String[] args)
-    {   ArrayList<Integer> l1=new ArrayList<>();
-        ArrayList<Integer> l=new ArrayList<>(); 
-       /// System.out.println(l.size());
-        l.add(1);
-        l.add(2);
-        l.add(3);
-        l1.add(2);
-        //Collections.copy(l, l1);  //l copy to l1
-        System.out.println(l);
-        
-
-
-        //Collections.shuffle(l);
-        //System.out.println(l);
-
-        //Collections.reverse(l);
-        //System.out.println(l);
-       
-        List<Integer> sublist = l.subList(0,2);
-       // System.out.println(sublist);
-
-        
-        l1.stream().forEach(ele->System.out.println(ele)); //using lambda function
-        System.out.println("-------------");
-
-        Iterator<Integer> it = l1.iterator();
-
-
-    }
-}
+import java.util.*;  
+public class ArrayListExample2{  
+ public static void main(String args[]){  
+  ArrayList<String> list=new ArrayList<String>();//Creating arraylist  
+  list.add("Mango");//Adding object in arraylist    
+  list.add("Apple");    
+  list.add("Banana");    
+  list.add("Grapes");    
+  //Traversing list through Iterator  
+  Iterator itr=list.iterator();//getting the Iterator  
+  while(itr.hasNext()){//check if iterator has the elements  
+   System.out.println(itr.next());//printing the element and move to next  
+  }  
+ }  
+}  
