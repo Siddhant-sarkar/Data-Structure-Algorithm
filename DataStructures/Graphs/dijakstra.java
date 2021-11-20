@@ -23,7 +23,6 @@ public class dijakstra {
          this.wsf=wsf;
          this.psf=psf;
       }
-
       public  int compareTo(Pair r){
          return this.wsf-r.wsf;
       }
